@@ -4,18 +4,18 @@
 #  DAOS_INCLUDE_DIRS - The libDAOS include directories
 #  DAOS_LIBRARIES - The libraries needed to use libDAOS
 
-FIND_PATH(WITH_DAOS_PREFIX
+FIND_PATH(DAOS_ROOT
     NAMES include/daos.h
 )
 
 FIND_LIBRARY(DAOS_LIBRARIES
     NAMES daos
-    HINTS ${WITH_DAOS_PREFIX}/lib
+    HINTS ${DAOS_ROOT}/lib
 )
 
 FIND_PATH(DAOS_INCLUDE_DIRS
     NAMES daos.h
-    HINTS ${WITH_DAOS_PREFIX}/include
+    HINTS ${DAOS_ROOT}/include
 )
 
 INCLUDE(FindPackageHandleStandardArgs)
