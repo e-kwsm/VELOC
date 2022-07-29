@@ -4,7 +4,7 @@ project (VELOC)
 ##### Global settings
 include(GNUInstallDirs)
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
-add_definitions(-O2 -g -Wall -D__BENCHMARK -D__ASSERT -D__INFO)
+add_definitions(-D__BENCHMARK -D__ASSERT -D__INFO)
 set(CMAKE_CXX_STANDARD 17)
 
 ##### Configuration setting
@@ -31,8 +31,7 @@ set(COMM_QUEUE_LIBRARIES ${CMAKE_THREAD_LIBS_INIT})
 # Communication protocol
 if (${COMM_QUEUE} STREQUAL "ipc_queue")
     # Boost is required for ipc_queue
-    set(Boost_FIND_REQUIRED True)
-    find_package(Boost 1.40)
+    find_package(Boost 1.40 REQUIRED)
     include_directories(${Boost_INCLUDE_DIR})
     list(APPEND COMM_QUEUE_LIBRARIES "rt")
 elseif (${COMM_QUEUE} STREQUAL "thallium_queue")
